@@ -10,6 +10,7 @@ use Dotclear\Core\Backend\{
     Notices,
     Page
 };
+use Dotclear\Database\Statement\DeleteStatement;
 use Dotclear\Helper\Html\Form\{
     Div,
     Form,
@@ -45,9 +46,26 @@ class Manage extends Process
         // Delete credentials
         if ($current->selected_credentials && !empty($current->entries)) {
             try {
-                    foreach ($current->entries as $entry) {
-                        App::credential()->delCredential($entry[0], $entry[1]);
+                foreach ($current->entries as $entry) {
+                    if (!is_array($entry) || count($entry) != 4) {
+                        continue;
                     }
+                    $sql = new DeleteStatement();
+                    $sql
+                        ->from(App::con()->prefix() . App::credential()::CREDENTIAL_TABLE_NAME)
+                        ->where('credential_type = ' . $sql->quote($entry[0]))
+                        ->and('credential_value = ' . $sql->quote($entry[1]))
+                        ->and('user_id =' . $sql->quote($entry[2]))
+                        ;
+
+                    if (empty($entry[3])) {
+                        $sql->and($sql->isNull('blog_id'));
+                    } else {
+                        $sql->and('blog_id =' . $sql->quote($entry[3]));
+                    }
+
+                    $sql->delete();
+                }
                 Notices::addSuccessNotice(__('Selected credentials have been successfully deleted'));
                 My::redirect();
             } catch (Exception $e) {

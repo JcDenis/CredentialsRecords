@@ -82,11 +82,15 @@ class ManageVars
         $this->filter->add(FiltersLibrary::getPageFilter());
         $this->filter->add(FiltersLibrary::getInputFilter('credential_type', __('Type:')));
         $this->filter->add(FiltersLibrary::getInputFilter('user_id', __('User:')));
-        $this->filter->add(FiltersLibrary::getInputFilter('credential_id', __('Credential:')));
+        $this->filter->add(FiltersLibrary::getInputFilter('blog_id', __('Blog:')));
+        $this->filter->add(FiltersLibrary::getInputFilter('credential_value', __('Credential:')));
         $params = $this->filter->params();
 
         if (!isset($params['credential_type'])) {
             $params['credential_type'] = '';
+        }
+        if (!isset($params['blog_id'])) {
+            $params['blog_id'] = '';
         }
 
         try {

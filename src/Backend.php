@@ -37,8 +37,10 @@ class Backend extends Process
                 $cols[My::id()] = [
                     My::name(),
                     [
+                        'date' => [true, __('Date')],
                         'type' => [true, __('Type')],
                         'user' => [true, __('User')],
+                        'blog' => [true, __('Blog')],
                         'id'   => [true, __('Credential')],
                         'data' => [true, __('Data')],
                     ],
@@ -49,11 +51,13 @@ class Backend extends Process
                 $sorts[My::id()] = [
                     My::name(),
                     [
+                        __('Date')       => 'credential_dt',
                         __('Type')       => 'credential_type',
                         __('User')       => 'user_id',
-                        __('Credential') => 'credential_id',
+                        __('Blog')       => 'blog_id',
+                        __('Credential') => 'credential_value',
                     ],
-                    'credential_id',
+                    'credential_value',
                     'desc',
                     [__('Logs per page'), 30],
                 ];

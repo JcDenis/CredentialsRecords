@@ -50,10 +50,14 @@ class BackendList extends Listing
         $pager = new Pager($page, (int) $this->rs_count, $nb_per_page, 10);
 
         $cols = new ArrayObject([
-            'type' => (new Text('th', __('Type')))
+            'date' => (new Text('th', __('Date')))
                 ->class('first')
                 ->extra('colspan="2"'),
+            'type' => (new Text('th', __('Type')))
+                ->extra('scope="col"'),
             'user' => (new Text('th', __('User')))
+                ->extra('scope="col"'),
+            'blog' => (new Text('th', __('Blog')))
                 ->extra('scope="col"'),
             'id' => (new Text('th', __('Credential')))
                 ->extra('scope="col"'),
@@ -64,7 +68,7 @@ class BackendList extends Listing
 
         $lines = [];
         while ($this->rs->fetch()) {
-            $lines[] = $this->line(isset($_POST['entries']) && in_array(json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_id')]), $_POST['entries']));
+            $lines[] = $this->line(isset($_POST['entries']) && in_array($this->uid(), $_POST['entries']));
         }
 
         echo
@@ -98,29 +102,44 @@ class BackendList extends Listing
      *
      * @param   bool    $checked    Selected line
      */
-    private function line(bool $checked): Component
+    private function line(bool $checked): Para
     {
         $cols = new ArrayObject([
             'check' => (new Para(null, 'td'))
                 ->class('nowrap minimal')
                 ->items([
                     (new Checkbox(['entries[]'], $checked))
-                        ->value(Html::escapeHTML(json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_id')]))),
+                        ->value(Html::escapeHTML($this->uid())),
                 ]),
+            'date' => (new Text('td', Html::escapeHTML(Date::dt2str(__('%Y-%m-%d %H:%M'), $this->rs->f('credential_dt')))))
+                ->class('nowrap minimal'),
             'type' => (new Text('td', Html::escapeHTML($this->rs->f('credential_type'))))
                 ->class('nowrap minimal'),
-            'id' => (new Text('td', Html::escapeHTML($this->rs->f('credential_id'))))
+            'id' => (new Text('td', Html::escapeHTML($this->rs->f('credential_value') ?: __('[EMPTY]'))))
                 ->class('nowrap minimal'),
             'user' => (new Text('td', Html::escapeHTML($this->rs->getUserCN())))
+                ->title(Html::escapeHTML($this->rs->f('user_id')))
                 ->class('nowrap minimal'),
-            'data' => (new Text('td', Html::escapeHTML($this->rs->f('credential_data'))))
+            'blog' => (new Text('td', Html::escapeHTML($this->rs->f('blog_id') ?? __('[NULL]'))))
+                ->class('nowrap minimal'),
+            'data' => (new Text('td', $this->prettyData()))
                 ->class('maximal'),
         ]);
         $this->userColumns(My::id(), $cols);
 
         return
-        (new Para('p' . $this->rs->f('credential_type') . $this->rs->f('credential_id'), 'tr'))
+        (new Para(null, 'tr'))
             ->class('line')
             ->items(iterator_to_array($cols));
+    }
+
+    private function uid(): string
+    {
+        return json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_value'),$this->rs->f('user_id'),$this->rs->f('blog_id') ?? '']);
+    }
+
+    private function prettyData(): string
+    {
+        return nl2br(str_replace(' ', '&nbsp;', Html::escapeHTML(json_encode($this->rs->getAllData(), JSON_PRETTY_PRINT))));
     }
 }
