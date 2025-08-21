@@ -20,7 +20,7 @@ _CredentialsRecords_ is a plugin for the open-source web publishing software cal
 
 ## USAGE
 
-First install _dcLog_, manualy from a zip package or from 
+First install _CredentialsRecords_, manualy from a zip package or from 
 Dotaddict repository. (See Dotclear's documentation to know how do this)
 
 Once it's done you can manage credentials database records from menu 
@@ -35,6 +35,6 @@ Once it's done you can manage credentials database records from menu
 
 ## CONTRIBUTORS
 
-* Jean-Christian Denis (latest)
+* Jean-Christian Denis
 
 You are welcome to contribute to this code.
