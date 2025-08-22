@@ -115,12 +115,12 @@ class BackendList extends Listing
                 ->class('nowrap minimal'),
             'type' => (new Text('td', Html::escapeHTML($this->rs->f('credential_type'))))
                 ->class('nowrap minimal'),
-            'id' => (new Text('td', Html::escapeHTML($this->rs->f('credential_value') ?: __('[EMPTY]'))))
-                ->class('nowrap minimal'),
             'user' => (new Text('td', Html::escapeHTML($this->rs->getUserCN())))
                 ->title(Html::escapeHTML($this->rs->f('user_id')))
                 ->class('nowrap minimal'),
             'blog' => (new Text('td', Html::escapeHTML($this->rs->f('blog_id') ?? __('[NULL]'))))
+                ->class('nowrap minimal'),
+            'id' => (new Text('td', Html::escapeHTML($this->rs->f('credential_value') ?: __('[EMPTY]'))))
                 ->class('nowrap minimal'),
             'data' => (new Text('td', $this->prettyData()))
                 ->class('maximal'),
