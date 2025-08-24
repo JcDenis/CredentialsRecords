@@ -57,7 +57,7 @@ class Backend extends Process
                         __('Blog')       => 'blog_id',
                         __('Credential') => 'credential_value',
                     ],
-                    'credential_value',
+                    'credential_dt',
                     'desc',
                     [__('Logs per page'), 30],
                 ];
