@@ -1,0 +1,71 @@
+# Language: Français
+# Module: CredentialsRecords - 0.1.2
+# Date: 2025-08-24 16:19:10
+# Author: , contact@jcdenis.fr
+# Translated with translater 2025.03.03
+
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Project-Id-Version: CredentialsRecords 0.1.2\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2025-08-24T16:19:10+00:00\n"
+"Last-Translator: Jean-Christian Denis\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: src/Backend.php:44
+#: src/BackendList.php:62
+msgid "Credential"
+msgstr "Jeton"
+
+#: src/Backend.php:45
+#: src/BackendList.php:64
+msgid "Data"
+msgstr "Données"
+
+#: src/BackendList.php:43
+msgid "No credential matches the filter"
+msgstr "Aucun jeton correspondant au filtre"
+
+#: src/BackendList.php:43
+msgid "No credential"
+msgstr "Aucun jeton"
+
+#: src/BackendList.php:86
+msgid "List of %s credentials matching the filter."
+msgstr "Liste des %s jetons correspondant au filtre."
+
+#: src/BackendList.php:87
+msgid "List of credentials. (%s)"
+msgstr "Listes des jetons. (%s)"
+
+#: src/BackendList.php:123
+msgid "[EMPTY]"
+msgstr "[VIDE]"
+
+#: src/Manage.php:69
+msgid "Selected credentials have been successfully deleted"
+msgstr "Les jetons sélectionnés ont été effacé avec succès"
+
+#: src/Manage.php:90
+msgid "Are you sure you want to delete selected credentials?"
+msgstr "Etes vous sur de vouloir effacer les jetons sélectionnés ?"
+
+#: src/Manage.php:108
+msgid "There are no credentials"
+msgstr "Il n'y a pas de jetons"
+
+#: src/Manage.php:135
+msgid "Delete selected credentials"
+msgstr "Effacer les jetons sélectionnés"
+
+#: src/ManageVars.php:86
+msgid "Credential:"
+msgstr "Jeton :"
+
+msgid "Credentials"
+msgstr "Jetons"
+
