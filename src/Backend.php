@@ -38,9 +38,9 @@ class Backend extends Process
                     My::name(),
                     [
                         'date' => [true, __('Date')],
-                        'type' => [true, __('Type')],
-                        'user' => [true, __('User')],
-                        'blog' => [true, __('Blog')],
+                        //'type' => [true, __('Type')],
+                        //'user' => [true, __('User')],
+                        //'blog' => [true, __('Blog')],
                         'id'   => [true, __('Credential')],
                         'data' => [true, __('Data')],
                     ],
