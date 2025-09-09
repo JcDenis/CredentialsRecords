@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Dotclear\Plugin\CredentialsRecords;
 
 use Dotclear\App;
-use Dotclear\Core\Process;
+use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Core\Backend\{
     Notices,
     Page
@@ -28,8 +28,10 @@ use Exception;
  * @author      Jean-Christian Denis
  * @copyright   GPL-3.0
  */
-class Manage extends Process
+class Manage
 {
+    use TraitProcess;
+
     public static function init(): bool
     {
         return self::status(My::checkContext(My::MANAGE));
