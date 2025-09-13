@@ -24,9 +24,9 @@ class ManageVars
     /**
      * ManageVars instance.
      *
-     * @var     ManageVars  $container
+     * @var     ManageVars  $instance
      */
-    private static $container;
+    private static ManageVars $instance;
 
     /**
      * The filter instance.
@@ -52,7 +52,7 @@ class ManageVars
     /**
      * The post form selected entries.
      *
-     * @var     array<int,array<string,string>>   $entries
+     * @var     array<int,array<int,string>>   $entries
      */
     public readonly array $entries;
 
@@ -71,11 +71,11 @@ class ManageVars
         $entries       = !empty($_POST['entries']) && is_array($_POST['entries']) ? $_POST['entries'] : [];
         foreach ($entries as $k => $entry) {
             $entries[$k] = json_decode($entry, true);
-            if (!is_array($entries[$k])) {
+            if (!is_array($entries[$k]) || $entries[$k] === []) {
                 unset($entries[$k]);
             }
         }
-        $this->entries              = is_array($entries) ? $entries : [];
+        $this->entries              = $entries;
         $this->selected_credentials = isset($_POST['selected_credentials']);
 
         $this->filter = new Filters(My::id());
@@ -110,10 +110,10 @@ class ManageVars
      */
     public static function init(): ManageVars
     {
-        if (!(self::$container instanceof self)) {
-            self::$container = new self();
+        if (!isset(self::$instance)) {
+            self::$instance = new self();
         }
 
-        return self::$container;
+        return self::$instance;
     }
 }

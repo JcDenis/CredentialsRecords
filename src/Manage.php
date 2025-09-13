@@ -49,12 +49,12 @@ class Manage
         if ($current->selected_credentials && !empty($current->entries)) {
             try {
                 foreach ($current->entries as $entry) {
-                    if (!is_array($entry) || count($entry) != 4) {
+                    if (count($entry) != 4) {
                         continue;
                     }
                     $sql = new DeleteStatement();
                     $sql
-                        ->from(App::con()->prefix() . App::credential()::CREDENTIAL_TABLE_NAME)
+                        ->from(App::db()->con()->prefix() . App::credential()::CREDENTIAL_TABLE_NAME)
                         ->where('credential_type = ' . $sql->quote($entry[0]))
                         ->and('credential_value = ' . $sql->quote($entry[1]))
                         ->and('user_id =' . $sql->quote($entry[2]))

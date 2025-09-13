@@ -135,11 +135,11 @@ class BackendList extends Listing
 
     private function uid(): string
     {
-        return json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_value'),$this->rs->f('user_id'),$this->rs->f('blog_id') ?? '']);
+        return (string) json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_value'),$this->rs->f('user_id'),$this->rs->f('blog_id') ?? '']);
     }
 
     private function prettyData(): string
     {
-        return nl2br(str_replace(' ', '&nbsp;', Html::escapeHTML(json_encode($this->rs->getAllData(), JSON_PRETTY_PRINT))));
+        return nl2br(str_replace(' ', '&nbsp;', Html::escapeHTML((string) json_encode($this->rs->getAllData(), JSON_PRETTY_PRINT))));
     }
 }
