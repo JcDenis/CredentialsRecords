@@ -111,16 +111,16 @@ class BackendList extends Listing
                     (new Checkbox(['entries[]'], $checked))
                         ->value(Html::escapeHTML($this->uid())),
                 ]),
-            'date' => (new Text('td', Html::escapeHTML(Date::dt2str(__('%Y-%m-%d %H:%M'), $this->rs->f('credential_dt')))))
+            'date' => (new Text('td', Html::escapeHTML(Date::dt2str(__('%Y-%m-%d %H:%M'), $this->rs->strField('credential_dt')))))
                 ->class('nowrap minimal'),
-            'type' => (new Text('td', Html::escapeHTML($this->rs->f('credential_type'))))
+            'type' => (new Text('td', Html::escapeHTML($this->rs->strField('credential_type'))))
                 ->class('nowrap minimal'),
             'user' => (new Text('td', Html::escapeHTML($this->rs->getUserCN())))
-                ->title(Html::escapeHTML($this->rs->f('user_id')))
+                ->title(Html::escapeHTML($this->rs->strField('user_id')))
                 ->class('nowrap minimal'),
-            'blog' => (new Text('td', Html::escapeHTML($this->rs->f('blog_id') ?? __('[NULL]'))))
+            'blog' => (new Text('td', Html::escapeHTML($this->rs->strField('blog_id') ?: __('[GLOBAL]'))))
                 ->class('nowrap minimal'),
-            'id' => (new Text('td', Html::escapeHTML($this->rs->f('credential_value') ?: __('[EMPTY]'))))
+            'id' => (new Text('td', Html::escapeHTML($this->rs->strField('credential_value') ?: __('[EMPTY]'))))
                 ->class('nowrap minimal'),
             'data' => (new Text('td', $this->prettyData()))
                 ->class('maximal'),
@@ -135,7 +135,7 @@ class BackendList extends Listing
 
     private function uid(): string
     {
-        return (string) json_encode([$this->rs->f('credential_type'),$this->rs->f('credential_value'),$this->rs->f('user_id'),$this->rs->f('blog_id') ?? '']);
+        return (string) json_encode([$this->rs->strField('credential_type'),$this->rs->strField('credential_value'),$this->rs->strField('user_id'),$this->rs->strField('blog_id')]);
     }
 
     private function prettyData(): string

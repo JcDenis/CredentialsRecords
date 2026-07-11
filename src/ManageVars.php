@@ -95,7 +95,7 @@ class ManageVars
 
         try {
             $this->credentials = App::credential()->getCredentials($params);
-            $count      = App::credential()->getCredentials($params, true)->f(0);
+            $count      = App::credential()->getCredentials($params, true)->cardinal();
             $count      = is_numeric($count) ? (int) $count : 0;
             $this->list = new BackendList($this->credentials, $count);
         } catch (Exception $e) {
