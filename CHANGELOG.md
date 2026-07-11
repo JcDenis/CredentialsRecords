@@ -1,3 +1,7 @@
+CredentialsRecords 0.4 - xxxx.xx.xx
+===========================================================
+* Bump Dotclear from 2.36 to 2.39 (url type, metarecord methods)
+
 CredentialsRecords 0.3 - 2025.09.09
 ===========================================================
 * Use TraitProcess
