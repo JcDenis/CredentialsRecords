@@ -1,6 +1,7 @@
-CredentialsRecords 0.4 - xxxx.xx.xx
+CredentialsRecords 0.x - xxxx.xx.xx
 ===========================================================
 * Bump Dotclear from 2.36 to 2.39 (url type, metarecord methods)
+* Code review (phpstan max)
 
 CredentialsRecords 0.3 - 2025.09.09
 ===========================================================

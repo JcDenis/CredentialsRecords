@@ -52,7 +52,7 @@ class ManageVars
     /**
      * The post form selected entries.
      *
-     * @var     array<int,array<int,string>>   $entries
+     * @var     array<int,array<int<0,3>,string>>   $entries
      */
     public readonly array $entries;
 
@@ -68,13 +68,21 @@ class ManageVars
      */
     protected function __construct()
     {
-        $entries       = !empty($_POST['entries']) && is_array($_POST['entries']) ? $_POST['entries'] : [];
-        foreach ($entries as $k => $entry) {
-            $entries[$k] = json_decode($entry, true);
-            if (!is_array($entries[$k]) || $entries[$k] === []) {
-                unset($entries[$k]);
+        $post_entries = !empty($_POST['entries']) && is_array($_POST['entries']) ? $_POST['entries'] : [];
+        $entries      = [];
+        $i = 0;
+        foreach ($post_entries as $entry) {
+            if (is_string($entry)) {
+                $entry = json_decode($entry, true);
+                if (is_array($entry)) {
+                    $entry = array_values(array_filter($entry, is_string(...)));
+                    if (count($entry) === 4) {
+                        $entries[$i++] = $entry;
+                    }
+                }
             }
         }
+
         $this->entries              = $entries;
         $this->selected_credentials = isset($_POST['selected_credentials']);
 
@@ -95,10 +103,18 @@ class ManageVars
 
         try {
             $this->credentials = App::credential()->getCredentials($params);
-            $count      = App::credential()->getCredentials($params, true)->cardinal();
-            $count      = is_numeric($count) ? (int) $count : 0;
-            $this->list = new BackendList($this->credentials, $count);
         } catch (Exception $e) {
+            $this->credentials = null;
+            App::error()->add($e->getMessage());
+        }
+        try {
+            if ($this->credentials !== null){
+                $this->list = new BackendList($this->credentials, App::credential()->getCredentials($params, true)->cardinal());
+            } else {
+                $this->list = null;
+            }
+        } catch (Exception $e) {
+            $this->list = null;
             App::error()->add($e->getMessage());
         }
     }

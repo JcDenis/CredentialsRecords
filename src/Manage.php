@@ -49,9 +49,6 @@ class Manage
         if ($current->selected_credentials && !empty($current->entries)) {
             try {
                 foreach ($current->entries as $entry) {
-                    if (count($entry) != 4) {
-                        continue;
-                    }
                     $sql = new DeleteStatement();
                     $sql
                         ->from(App::db()->con()->prefix() . App::credential()::CREDENTIAL_TABLE_NAME)
@@ -136,7 +133,7 @@ class Manage
                                                 ->class('delete')
                                                 ->value(__('Delete selected credentials')),
                                         ]),
-                                    ... My::hiddenFields($current->filter->values()),
+                                    ... My::hiddenFields(array_filter($current->filter->values(), is_string(...))),
                                 ]),
                         ])->render(),
                     $current->filter->show()

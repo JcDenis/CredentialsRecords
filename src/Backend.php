@@ -31,7 +31,9 @@ class Backend
             return false;
         }
 
-        My::addBackendMenuItem(App::backend()->menus()::MENU_SYSTEM);
+        if (is_string(App::backend()->menus()::MENU_SYSTEM)) {
+            My::addBackendMenuItem(App::backend()->menus()::MENU_SYSTEM);
+        }
 
         App::behavior()->addBehaviors([
             // backend user preference for credentials list columns
