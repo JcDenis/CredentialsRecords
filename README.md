@@ -36,5 +36,6 @@ Once it's done you can manage credentials database records from menu
 ## CONTRIBUTORS
 
 * Jean-Christian Denis
+* Claude (AI assistant by Anthropic)
 
 You are welcome to contribute to this code.

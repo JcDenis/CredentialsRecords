@@ -6,8 +6,9 @@ namespace Dotclear\Plugin\CredentialsRecords;
 
 use ArrayObject;
 use Dotclear\App;
-use Dotclear\Helper\Process\TraitProcess;
 use Dotclear\Core\Backend\Favorites;
+use Dotclear\Core\Backend\Menus;
+use Dotclear\Helper\Process\TraitProcess;
 
 /**
  * @brief       CredentialsRecords backend class.
@@ -31,9 +32,7 @@ class Backend
             return false;
         }
 
-        if (is_string(App::backend()->menus()::MENU_SYSTEM)) {
-            My::addBackendMenuItem(App::backend()->menus()::MENU_SYSTEM);
-        }
+        My::addBackendMenuItem(Menus::MENU_SYSTEM);
 
         App::behavior()->addBehaviors([
             // backend user preference for credentials list columns
