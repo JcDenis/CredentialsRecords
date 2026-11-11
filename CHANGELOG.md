@@ -1,3 +1,7 @@
+CredentialsRecords 0.6 - 2026.11.11
+===========================================================
+* Fix delete button not enabled by checkboxes helpers (select all)
+
 CredentialsRecords 0.5 - 2026.11.09
 ===========================================================
 * Fix compatibility with Dotclear 2.40
