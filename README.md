@@ -12,6 +12,8 @@ _CredentialsRecords_ is a plugin for the open-source web publishing software cal
 
 > Display dotclear's credentials records.
 
+A user guide with screenshots is available in French: [guide d'utilisation](https://github.com/JcDenis/CredentialsRecords/blob/master/docs/fr/utilisation.md).
+
 ## REQUIREMENTS
 
 * PHP 8.1+
@@ -29,6 +31,7 @@ Once it's done you can manage credentials database records from menu
 ## LINKS
 
 * [License](https://github.com/JcDenis/CredentialsRecords/blob/master/LICENSE)
+* [User guide (in French)](https://github.com/JcDenis/CredentialsRecords/blob/master/docs/fr/utilisation.md)
 * [Packages & details](https://github.com/JcDenis/CredentialsRecords/releases) (or on [Repository](https://dotclear.org/plugin/detail/CredentialsRecords))
 * [Sources & contributions](https://github.com/JcDenis/CredentialsRecords)
 * [Issues & security](https://github.com/JcDenis/CredentialsRecords/issues)
