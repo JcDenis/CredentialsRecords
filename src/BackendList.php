@@ -86,7 +86,7 @@ class BackendList extends Listing
                             (new Text(
                                 'caption',
                                 $filter ?
-                                sprintf(__('List of %s credentials matching the filter.'), $this->rs_count) :
+                                sprintf(__('List of %s credential matching the filter.', 'List of %s credentials matching the filter.', $this->rs_count), $this->rs_count) :
                                 sprintf(__('List of credentials. (%s)'), $this->rs_count)
                             )),
                             (new Para(null, 'tr'))
@@ -146,6 +146,6 @@ class BackendList extends Listing
 
     private function prettyData(): string
     {
-        return nl2br(str_replace(' ', '&nbsp;', Html::escapeHTML((string) json_encode($this->rs->getAllData(), JSON_PRETTY_PRINT))));
+        return nl2br(str_replace(' ', '&nbsp;', Html::escapeHTML((string) json_encode($this->rs->getAllData(), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES))));
     }
 }
