@@ -7,7 +7,7 @@
     <desc>Manage Dotclear credentials records</desc>
     <file>https://github.com/JcDenis/CredentialsRecords/releases/download/v0.7/plugin-CredentialsRecords.zip</file>
     <da:dcmin>2.39</da:dcmin>
-    <da:details>https://github.com/JcDenis/CredentialsRecords/src/branch/master/README.md</da:details>
+    <da:details>https://github.com/JcDenis/CredentialsRecords/blob/master/README.md</da:details>
     <da:support>https://github.com/JcDenis/CredentialsRecords/issues</da:support>
   </module>
 </modules>
