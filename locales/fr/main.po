@@ -35,12 +35,14 @@ msgid "No credential"
 msgstr "Aucun jeton"
 
 #: src/BackendList.php:86
-msgid "List of %s credentials matching the filter."
-msgstr "Liste des %s jetons correspondant au filtre."
+msgid "List of %s credential matching the filter."
+msgid_plural "List of %s credentials matching the filter."
+msgstr[0] "Liste du jeton correspondant au filtre."
+msgstr[1] "Liste des %s jetons correspondant au filtre."
 
 #: src/BackendList.php:87
 msgid "List of credentials. (%s)"
-msgstr "Listes des jetons. (%s)"
+msgstr "Liste des jetons (%s)"
 
 #: src/BackendList.php:123
 msgid "[EMPTY]"
@@ -52,7 +54,7 @@ msgstr "Les jetons sélectionnés ont été effacé avec succès"
 
 #: src/Manage.php:90
 msgid "Are you sure you want to delete selected credentials?"
-msgstr "Etes vous sur de vouloir effacer les jetons sélectionnés ?"
+msgstr "Êtes-vous sûr de vouloir effacer les jetons sélectionnés ?"
 
 #: src/Manage.php:108
 msgid "There are no credentials"
@@ -69,3 +71,8 @@ msgstr "Jeton :"
 msgid "Credentials"
 msgstr "Jetons"
 
+msgid "User:"
+msgstr "Utilisateur :"
+
+msgid "credentials per page"
+msgstr "jetons par page"

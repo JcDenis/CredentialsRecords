@@ -62,7 +62,7 @@ class Backend
                     ],
                     'credential_dt',
                     'desc',
-                    [__('Logs per page'), 30],
+                    [__('credentials per page'), 30],
                 ];
             },
             // backend user preference for dashboard icon
