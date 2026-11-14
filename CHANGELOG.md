@@ -1,3 +1,10 @@
+CredentialsRecords 0.7 - 2026.11.14
+===========================================================
+* Fix accents in credentials data and singular of list title
+* Fix translations
+* Add a user guide in French, with screenshots
+* Add admin help in English and French
+
 CredentialsRecords 0.6 - 2026.11.11
 ===========================================================
 * Fix delete button not enabled by checkboxes helpers (select all)

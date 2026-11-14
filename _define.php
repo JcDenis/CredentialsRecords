@@ -21,7 +21,7 @@ $this->registerModule(
     "Credentials",
     'Manage Dotclear credentials records',
     'Jean-Christian Denis and Contributors',
-    '0.6',
+    '0.7',
     [
         'requires'    => [['core', '2.39']],
         'permissions' => null,
