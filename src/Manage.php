@@ -141,6 +141,7 @@ class Manage
             }
         }
 
+        Page::helpBlock(My::id() . '-credentials');
         Page::closeModule();
     }
 }
