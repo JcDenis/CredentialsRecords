@@ -23,7 +23,7 @@ Required Dotclear and PHP versions: see `_define.php`.
 * `src/ManageVars.php`: admin page (vars).
 * `src/My.php`: module helpers (`My::id()`, settings, permissions).
 * `js/`: `backend.js`.
-* Behaviors used: `adminColumnsListsV2`, `adminFiltersListsV2`, `adminDashboardFavoritesV2`.
+* Behaviors used: `adminColumnsListsV2`, `adminFiltersListsV3`, `adminDashboardFavoritesV2`.
 
 ## Pitfalls
 
