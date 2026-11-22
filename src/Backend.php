@@ -8,6 +8,7 @@ use ArrayObject;
 use Dotclear\App;
 use Dotclear\Core\Backend\Favorites;
 use Dotclear\Core\Backend\Menus;
+use Dotclear\Core\Backend\UserPrefFilter;
 use Dotclear\Helper\Process\TraitProcess;
 
 /**
@@ -50,8 +51,9 @@ class Backend
                 ];
             },
             // backend filter for credentials list sort
-            'adminFiltersListsV2' => function (ArrayObject $sorts): void {
-                $sorts[My::id()] = [
+            'adminFiltersListsV3' => function (ArrayObject $filters): void {
+                $filters->append(new UserPrefFilter(
+                    My::id(),
                     My::name(),
                     [
                         __('Date')       => 'credential_dt',
@@ -62,8 +64,9 @@ class Backend
                     ],
                     'credential_dt',
                     'desc',
-                    [__('credentials per page'), 30],
-                ];
+                    __('credentials per page'),
+                    30
+                ));
             },
             // backend user preference for dashboard icon
             'adminDashboardFavoritesV2' => function (Favorites $favs): void {
