@@ -1,3 +1,7 @@
+CredentialsRecords 0.8 - 2026.11.22
+===========================================================
+* [compat] Use adminFiltersListsV3 behavior
+
 CredentialsRecords 0.7 - 2026.11.14
 ===========================================================
 * Fix accents in credentials data and singular of list title
